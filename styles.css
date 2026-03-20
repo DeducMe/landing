@@ -1,0 +1,331 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #6C7A25;
+  --primary-dark: #5a6620;
+  --surface: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #6B6B6B;
+  --destructive: #E53E3E;
+  --success: #38A169;
+  --separator: #E2E2E2;
+
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --radius-round: 9999px;
+  --radius-l: 12px;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--surface);
+  line-height: 1.6;
+}
+
+/* ===================================================
+   Page layout: two columns, full viewport
+   =================================================== */
+
+.page {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ===================================================
+   Left panel
+   =================================================== */
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 56px;
+  background: var(--surface);
+}
+
+.content {
+  max-width: 460px;
+  width: 100%;
+}
+
+.app-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 28px;
+}
+
+.headline {
+  font-size: clamp(36px, 3.8vw, 58px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+
+.subtitle {
+  font-size: clamp(14px, 1.4vw, 17px);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.email-input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1.5px solid var(--separator);
+  border-radius: var(--radius-round);
+  font-size: 15px;
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.email-input:focus {
+  border-color: var(--primary);
+}
+
+.email-input::placeholder {
+  color: #B0B0B0;
+}
+
+.cta-button {
+  padding: 14px 22px;
+  background: var(--primary);
+  color: var(--surface);
+  border: none;
+  border-radius: var(--radius-round);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-family);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+}
+
+.cta-button:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.cta-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-error {
+  font-size: 13px;
+  color: var(--destructive);
+  min-height: 18px;
+  padding-left: 4px;
+}
+
+.social-proof {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding-left: 4px;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  background: #F0FFF4;
+  border: 1.5px solid #9AE6B4;
+  border-radius: var(--radius-l);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--success);
+}
+
+.success-icon {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ===================================================
+   Right panel
+   =================================================== */
+
+.right {
+  position: relative;
+  overflow: visible;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Warm background texture — right edge clips off screen, only left curve visible */
+.warm-bg {
+  position: absolute;
+  height: 140vh;
+  top: 0;
+  left: 10%;
+  transform: translateY(-20%) rotate(-20deg) scaleY(-1);
+  transform-origin: center center;
+  opacity: 0.8;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 180px;
+  overflow: hidden;
+  box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.04);
+
+  filter: blur(1px);
+}
+
+/* Phone mockup — above warm-bg */
+.phone-wrapper {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 32px 64px rgba(0, 0, 0, 0.22));
+}
+
+.phone-bezel {
+  display: block;
+  width: clamp(200px, 22vw, 300px);
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Screenshot sits inside the screen area of the bezel */
+.phone-screen {
+  position: absolute;
+  z-index: 1;
+  top: 2.5%;
+  left: 6.5%;
+  width: 87%;
+  border-radius: 40px;
+  display: block;
+}
+
+/* ===================================================
+   Responsive: Mobile
+   =================================================== */
+
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    height: 100svh;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  /* Top-left corner texture */
+  .page::before {
+    content: '';
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: -90px;
+    left: -90px;
+    background: url('warm-background.png') center / cover;
+    border-radius: 80px;
+    opacity: 0.8;
+    transform: rotate(-20deg);
+    box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.04);
+    filter: blur(1px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Bottom-right corner texture */
+  .page::after {
+    content: '';
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    bottom: -90px;
+    right: -90px;
+    background: url('warm-background.png') center / cover;
+    border-radius: 80px;
+    opacity: 0.8;
+    transform: rotate(-20deg);
+    box-shadow: 0 0 12px 12px rgba(0, 0, 0, 0.04);
+    filter: blur(1px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Hide right panel (phone mockup) */
+  .right {
+    display: none;
+  }
+
+  /* Left takes full page, centered — transparent so corner textures show through */
+  .left {
+    background: transparent;
+    padding: 48px 28px;
+    position: relative;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .app-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subtitle {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Stacked form */
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .email-input {
+    text-align: center;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .social-proof,
+  .form-error {
+    text-align: center;
+    padding-left: 0;
+  }
+}

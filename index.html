@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BankLink — All Your Banks. One View.</title>
+  <meta name="description" content="BankLink merges transactions from any bank worldwide into one offline dashboard. No logins, no account linking, no cloud." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Left: content -->
+    <div class="left">
+      <div class="content">
+        <img src="app-icon.png" alt="BankLink" class="app-icon" />
+        <h1 class="headline">All your banks.<br />One view.</h1>
+        <p class="subtitle">Scan any bank statement — we turn it into insights.<br />No logins. No cloud. Works worldwide.</p>
+
+        <form class="waitlist-form" id="waitlist-form" novalidate>
+          <div class="form-row">
+            <input type="email" id="email-input" class="email-input" placeholder="Your email address" autocomplete="email" />
+            <button type="submit" class="cta-button" id="submit-btn">Get early access</button>
+          </div>
+          <p class="form-error" id="form-error"></p>
+          <p class="social-proof">847 people already joined the waitlist</p>
+        </form>
+
+        <div class="success-message" id="success-message" style="display:none;">
+          <span class="success-icon">&#10003;</span>
+          You're on the list! We'll be in touch.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: phone mockup -->
+    <div class="right">
+      <img src="warm-background.png" alt="" class="warm-bg" />
+      <div class="phone-wrapper">
+        <img src="screenshot.png" alt="BankLink app" class="phone-screen" />
+        <img src="Bezel.png" alt="" class="phone-bezel" />
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
